@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Particles from 'react-particles-js';
+import Navigation from './components/Navigation';
+import Home from './components/Home';
+import Signin from './components/SignIn';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
-function App() {
+const App = () => {
+  const particlesOptions = {
+    particles: {
+      number: {
+        value: 100,
+        density: {
+          enable: true,
+          value_area: 800,
+        },
+      },
+    },
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Particles className='particles' params={particlesOptions} />
+      <Navigation />
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/signin' component={Signin} />
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
