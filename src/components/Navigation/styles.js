@@ -17,3 +17,13 @@ export const StyledLink = styled(Link)`
     border-bottom: 2px solid white;
   }
 `;
+export const Text = styled.span`
+  text-decoration: none;
+  color: #000;
+  margin-left: 28px;
+  font-size: 24px;
+  transition: border 0.2s;
+  &:hover {
+    border-bottom: 2px solid white;
+  }
+`;

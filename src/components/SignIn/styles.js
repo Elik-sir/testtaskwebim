@@ -42,3 +42,10 @@ export const Input = styled.input`
   width: 200px;
   height: 32px;
 `;
+export const WrapperLoader = styled.div`
+  position: absolute;
+  right: 50;
+  left: 50;
+  marginbottom: auto;
+  margin-top: 90px;
+`;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Arcticle, NameField, Button, Input } from './styles';
+import { Arcticle, NameField, Button, Input, WrapperLoader } from './styles';
 import { connect } from 'react-redux';
-import { fetchStartAsync } from '../../redux/user/actions';
+import { fetchTokenStartAsync } from '../../redux/user/actions';
 import Loader from 'react-loader-spinner';
 
 const Signin = ({ getToken, isLoading }) => {
@@ -30,24 +30,16 @@ const Signin = ({ getToken, isLoading }) => {
   return (
     <Arcticle>
       {isLoading && (
-        <div
-          style={{
-            position: 'absolute',
-            right: 50,
-            left: 50,
-            marginBottom: 'auto',
-            marginTop: '90px',
-          }}
-        >
+        <WrapperLoader>
           <Loader type='Puff' color='#00BFFF' height={100} width={100} />
-        </div>
+        </WrapperLoader>
       )}
       <fieldset id='sign_up' className='fieldset'>
         <legend className='legend'>SIGN IN</legend>
         <div>
-          <NameField>Email</NameField>
+          <NameField>USERNAME</NameField>
           <Input type='email' onChange={handlerUsernameChange} />
-          <NameField>Password</NameField>
+          <NameField>PASSWORD</NameField>
           <Input type='password' onChange={handlerPasswordChange} />
           <Button onClick={SendCredentionals} disabled={isLoading}>
             Sign In
@@ -61,7 +53,7 @@ const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading,
 });
 const mapDispatchToProps = (dispatch) => ({
-  getToken: (credentional) => dispatch(fetchStartAsync(credentional)),
+  getToken: (credentional) => dispatch(fetchTokenStartAsync(credentional)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

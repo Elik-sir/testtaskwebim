@@ -1,12 +1,30 @@
-import React from 'react';
-import { Title } from './styles';
-const Home = () => (
-  <Title>
-    Welcome
-    <br /> to my test task
-    <br />
-    sign in or register for using app
-  </Title>
-);
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Input } from './styles';
+import UserItems from '../ContainerUserItems';
+import { fetchUsersStartAsync, filterUsername } from '../../redux/user/actions';
 
-export default Home;
+const Home = ({ token, getUsers, filterUsername }) => {
+  useEffect(() => {
+    getUsers(token);
+  }, [token, getUsers]);
+  return (
+    <div>
+      <Input
+        placeholder='Enter username'
+        onChange={(e) => filterUsername(e.target.value)}
+      />
+      <UserItems />
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  token: state.user.token,
+  isLoading: state.user.isLoading,
+});
+const mapDispatchToProps = (dispatch) => ({
+  getUsers: (token) => dispatch(fetchUsersStartAsync(token)),
+  filterUsername: (username) => dispatch(filterUsername(username)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

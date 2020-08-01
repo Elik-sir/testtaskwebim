@@ -1,11 +1,19 @@
 import React from 'react';
-
-import { NavigationContainer, StyledLink } from './styles';
-const Navigation = () => (
+import { connect } from 'react-redux';
+import { NavigationContainer, StyledLink, Text } from './styles';
+const Navigation = ({ user }) => (
   <NavigationContainer>
-    <StyledLink to='/signin'>Sign in</StyledLink>
-    <StyledLink to='/register'>Register</StyledLink>
+    {user ? (
+      <Text>LOGOUT</Text>
+    ) : (
+      <>
+        <StyledLink to='/signin'>SIGN IN</StyledLink>
+        <StyledLink to='/register'>REGISTER</StyledLink>
+      </>
+    )}
   </NavigationContainer>
 );
-
-export default Navigation;
+const mapStateToProps = (state) => ({
+  user: state.user.token,
+});
+export default connect(mapStateToProps)(Navigation);
