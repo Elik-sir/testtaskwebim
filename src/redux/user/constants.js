@@ -1,0 +1,5 @@
+export const FETCH_TYPES = {
+  START: 'START',
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE',
+};
