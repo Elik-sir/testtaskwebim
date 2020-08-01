@@ -1,4 +1,9 @@
-import { FETCH_TYPES, FILTER_USERNAME, GET_TOKEN } from './constants';
+import {
+  FETCH_TYPES,
+  FILTER_USERNAME,
+  GET_TOKEN,
+  SORT_USERS,
+} from './constants';
 const defaultState = {
   isLoading: false,
   token: '781bd9f1de084f4daa7ba2aa8a71a2eab855354e',
@@ -38,6 +43,13 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         filterUsername: action.payload,
+      };
+    case SORT_USERS:
+      return {
+        ...state,
+        users: state.users.sort((a, b) =>
+          a.id > b.id ? 1 * action.payload : -1 * action.payload,
+        ),
       };
     default:
       return state;

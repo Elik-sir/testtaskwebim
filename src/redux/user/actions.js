@@ -3,6 +3,7 @@ import {
   GET_TOKEN,
   GET_USERS,
   FILTER_USERNAME,
+  SORT_USERS,
 } from './constants';
 
 export const fetchStart = () => ({
@@ -75,4 +76,9 @@ export const fetchUsersStartAsync = (token) => {
 export const filterUsername = (username) => ({
   type: FILTER_USERNAME,
   payload: username,
+});
+
+export const sortUsers = (order) => ({
+  type: SORT_USERS,
+  payload: order,
 });
