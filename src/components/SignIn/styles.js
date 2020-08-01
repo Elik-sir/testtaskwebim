@@ -27,7 +27,8 @@ export const Button = styled.button`
   width: auto;
   padding: 8px 16px;
   margin: 16px auto;
-  background: rgba(0, 0, 0, 0);
+  background: ${(props) =>
+    props.disabled ? 'rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 0)'};
   border: 1px solid black;
   font-size: 20px;
   &:hover {
