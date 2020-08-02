@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { logout } from '../../redux/user/actions';
 import { NavigationContainer, StyledLink, Text } from './styles';
-const Navigation = ({ user }) => (
+const Navigation = ({ user, logout }) => (
   <NavigationContainer>
     {user ? (
-      <Text>LOGOUT</Text>
+      <Text onClick={logout}>LOGOUT</Text>
     ) : (
       <>
         <StyledLink to='/signin'>SIGN IN</StyledLink>
@@ -16,4 +17,7 @@ const Navigation = ({ user }) => (
 const mapStateToProps = (state) => ({
   user: state.user.token,
 });
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

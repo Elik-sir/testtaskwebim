@@ -6,4 +6,5 @@ export const FETCH_TYPES = {
 export const GET_USERS = 'GET_USERS';
 export const GET_TOKEN = 'GET_TOKEN';
 export const FILTER_USERNAME = 'FILTER_USERNAME';
-export const SORT_USERS='SORT_USERS';
+export const SORT_USERS = 'SORT_USERS';
+export const LOGOUT = 'LOGOUT';

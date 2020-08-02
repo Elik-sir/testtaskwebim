@@ -29,14 +29,14 @@ const Signin = ({ getToken, isLoading }) => {
   };
   return (
     <Arcticle>
-      {isLoading && (
-        <WrapperLoader>
-          <Loader type='Puff' color='#00BFFF' height={100} width={100} />
-        </WrapperLoader>
-      )}
       <fieldset id='sign_up' className='fieldset'>
         <legend className='legend'>SIGN IN</legend>
         <div>
+          {isLoading && (
+            <WrapperLoader>
+              <Loader type='Puff' color='#00BFFF' height={100} width={100} />
+            </WrapperLoader>
+          )}
           <NameField>USERNAME</NameField>
           <Input type='email' onChange={handlerUsernameChange} />
           <NameField>PASSWORD</NameField>

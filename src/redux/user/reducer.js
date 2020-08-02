@@ -3,6 +3,7 @@ import {
   FILTER_USERNAME,
   GET_TOKEN,
   SORT_USERS,
+  LOGOUT,
 } from './constants';
 const defaultState = {
   isLoading: false,
@@ -50,6 +51,11 @@ const userReducer = (state = defaultState, action) => {
         users: state.users.sort((a, b) =>
           a.id > b.id ? 1 * action.payload : -1 * action.payload,
         ),
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        token: '',
       };
     default:
       return state;

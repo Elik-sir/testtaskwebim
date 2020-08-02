@@ -4,6 +4,7 @@ import {
   GET_USERS,
   FILTER_USERNAME,
   SORT_USERS,
+  LOGOUT,
 } from './constants';
 
 export const fetchStart = () => ({
@@ -29,7 +30,7 @@ export const fetchTokenStartAsync = (credentials) => {
     try {
       dispatch(fetchStart());
       const response = await fetch(
-        `http://emphasoft-test-assignment.herokuapp.com/api-token-auth/`,
+        `https://emphasoft-test-assignment.herokuapp.com/api-token-auth/`,
         {
           method: 'post',
           headers: {
@@ -43,7 +44,7 @@ export const fetchTokenStartAsync = (credentials) => {
       );
       if (response.status >= 400) throw new Error('Wrong credentials');
       const token = await response.json();
-      dispatch(fetchTokenSuccess(token));
+      dispatch(fetchTokenSuccess(token.token));
     } catch (e) {
       dispatch(fetchTokenFailure(e.message));
     }
@@ -54,7 +55,7 @@ export const fetchUsersStartAsync = (token) => {
     try {
       dispatch(fetchStart());
       const response = await fetch(
-        'http://emphasoft-test-assignment.herokuapp.com/api/v1/users',
+        'https://emphasoft-test-assignment.herokuapp.com/api/v1/users',
         {
           method: 'get',
           headers: {
@@ -81,4 +82,7 @@ export const filterUsername = (username) => ({
 export const sortUsers = (order) => ({
   type: SORT_USERS,
   payload: order,
+});
+export const logout = () => ({
+  type: LOGOUT,
 });

@@ -44,8 +44,9 @@ export const Input = styled.input`
 `;
 export const WrapperLoader = styled.div`
   position: absolute;
-  right: 50;
-  left: 50;
-  marginbottom: auto;
-  margin-top: 90px;
+  top: 50;
+  bottom: 50;
+  left: 0;
+  right: 0;
+  margin-top: 32px;
 `;
